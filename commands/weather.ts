@@ -49,7 +49,7 @@ export default {
 
     await interaction.deferReply();
 
-    weather.get(location, { degreeType: unit === 'K' ? 'C' : unit }, async (err, result) => {
+    weather.get(location, { degreeType: unit === 'K' ? 'C' : unit }, async (err:any, result:any) => {
       if (err) {
         await interaction.editReply(`❌ Error fetching weather: ${err.message}`);
         return;
