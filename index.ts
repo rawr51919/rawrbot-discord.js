@@ -3,7 +3,6 @@ import {
   Client,
   GatewayIntentBits,
   Partials,
-  Message,
   Events,
 } from "discord.js";
 import { MongoClient, Collection } from "mongodb";
@@ -99,40 +98,6 @@ client.on(Events.MessageUpdate, async (oldMessage, newMessage) => {
     } catch (err) {
       console.error("Error saving message edit to MongoDB.");
       console.error(err);
-    }
-  }
-});
-
-// --- Example command handler (basic text command) ---
-client.on(Events.MessageCreate, async (message: Message) => {
-  if (message.author?.bot) return;
-
-  if (message.content === "!ping") {
-    await message.reply("Pong!");
-  }
-
-  if (message.content.startsWith("!history ")) {
-    const messageId = message.content.split(" ")[1];
-    if (!messageId) return message.reply("Usage: `!history <messageId>`");
-
-    try {
-      const doc = await editsCollection.findOne({ messageId });
-      if (!doc?.edits?.length) {
-        return message.reply("No edits found for that message.");
-      }
-
-      const formatted = doc.edits
-        .map(
-          (e, i) =>
-            `#${i + 1} @ ${new Date(e.editedAt).toLocaleString()}: ${e.content}`
-        )
-        .join("\n");
-
-      await message.reply("**Edit history:**\n" + formatted);
-    } catch (err) {
-      console.error("Error fetching edit history.");
-      console.error(err);
-      await message.reply("Failed to fetch history.");
     }
   }
 });
