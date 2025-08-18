@@ -4,6 +4,9 @@ import globals from "globals";
 export default [
   js.configs.recommended,
   {
+    ignores: ["dist/**"], // <-- top-level ignores
+  },
+  {
     files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
     languageOptions: {
       ecmaVersion: "latest",
