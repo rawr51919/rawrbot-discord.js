@@ -7,9 +7,13 @@
     "test": "npx eslint . && npx jest"
   },
   "keywords": [],
-  "author": "",
+  "author": "rawr51919",
   "license": "ISC",
-  "description": "",
+  "description": "My own personal Discord bot. Has a few fun commands in here.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rawr51919/rawrbot-discord.js.git"
+  },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@jest/globals": "^30.0.5",
