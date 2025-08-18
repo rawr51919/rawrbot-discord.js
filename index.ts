@@ -49,8 +49,7 @@ async function initMongo() {
     editsCollection = db.collection<MessageEditDoc>("messageEdits");
     console.log("Connected to MongoDB.");
   } catch (err) {
-    console.error("Failed to connect to MongoDB.");
-    console.error(err);
+    console.error("Failed to connect to MongoDB. ", err);
     process.exit(1);
   }
 }
